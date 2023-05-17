@@ -21,6 +21,27 @@
 - El servicio puede ser escrito en cualquier lenguaje, html o php o python o el lenguaje que usted considere que puede manejar mejor, recuerde que la idea principal del proyecto es usar un despliegue usando contenedores
 
 # Comienzo Al Trabajo
+## Creación de Dockers
+> Los siguientes comandos seran para los sitemas operativos de Linux
+
+En primer instancia tendremos que abrir una Terminal en Linux
+
+Luego revisaremos que tengamos el programa de Docker en nuestro sistema operativo, en caso que no lo tengamos, aqui les dejo la instalacion de Docker Engine desde la pagina de documentacion de [Docker](https://docs.docker.com/engine/install/ubuntu/)
+
+Luego realizamos teniendo Docker, los siguientes comandos:
+```sh
+sudo apt update
+sudo docker pull ubuntu
+sudo docker run -it -p 8080:80 ubuntu
+```
+Luego de esto, ya tendriamos que estar en la Terminal del contenedor que creamos.
+> Una vez que estemos dentro del contenedor estaremos en todo momento en el modo SuperUsuario
+
+El objetivo ya sera la automatización de descarga de las librerias necesarias y iniciar nuestra pagina web, para eso primero vamos a tener que descargar un editor de texto de Terminal, ya que nuestro contenedor vendrá sin esta, lo descargamos poniendo
+```sh
+apt install nano
+```
+
 ## Automatización en la creación de Dockers
 
 ## Elaboracion de la página web
