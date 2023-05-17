@@ -22,3 +22,25 @@
 
 # Comienzo Al Trabajo
 ## Automatización en la creación de Dockers
+
+## Elaboracion de la página web
+Más que todo en este apartado se buscar mostrar y explicar la importancia de algunos factores del codigo compartido
+> Podrás encontrar la elaboración de esta pagina en los archivos adjuntos de este trabajo llamado "pagina.py".
+
+#### ~ Login ~
+> En la elaboracion del sistema de Login, no se ha usado ninguna herramienta de base de datos como puede ser perfectamente SQL, solo se ha hecho desde el codigo, la implementación de un usuario y una contraseña, ya que he pensado que puede ser mas optimo para este trabajo.
+
+En la linea n°59 hasta la linea n°62 se encuentra en donde estamos validando revisando si es verdadero o flaso, la informacion que la persona ingresa, lo que tenemos en la ultima linea es lo mismo que tener 
+
+```sh
+if username == valid_username and password == valid_password:
+        return True
+    else:
+        return False
+```
+
+###### Usuario y contraseña del codigo (Si lo quieres poner a prueba)
+
+`Usuario: admin`
+
+`Contraseña: password`
