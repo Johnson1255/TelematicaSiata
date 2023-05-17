@@ -6,4 +6,4 @@ WORKDIR /SIATA
 COPY pagina.py .
 COPY requirementsPagina.txt .
 RUN pip3 install -r requirementsPagina.txt
-#CMD ["python3.10","pagina.py"]
+CMD ["python3.10","pagina.py"]
