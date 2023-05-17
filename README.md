@@ -26,6 +26,28 @@
 ## Elaboracion de la página web
 Más que todo en este apartado se buscar mostrar y explicar la importancia de algunos factores del codigo compartido
 > Podrás encontrar la elaboración de esta pagina en los archivos adjuntos de este trabajo llamado "pagina.py".
+> Tambien se puede elaborar la pagina con herramientas como lo es HTML y CSS pero en el apartado de la graficacion con estos datos resulta bastante tedioso
+
+La pagina funciona de la siguiente forma, siempre cuando se quiera tener acceso a la pagina, tendra que verificar que tenga nombre y usuario, ingresando sus datos en los apartados correspondientes.
+
+Cuando el sistema verifique estos datos le dara acceso a la informacion de SIATA, para la graficación de este componente podriamos haber utilizado otro codigo pero se me ha perdido el codigo y no recuerdo perfectamente como es la incorporacion de este, pero el otra forma de implementar la graficacion de los datos del archivo json es con platly.ghaph_objets de la siguiente forma:
+```sh
+url = "Ingresar el Url de SIATA"
+
+data = pd.read_json(url.convert_dates='True')
+latr = []
+lonr = []
+zr = []
+
+for i in range(0,100):
+	zr.append(data['datos'][i]['pocentajeNivel'])
+	latr.append(data['datos'][i]['coordenadas'][0]['latitud'])
+	lonr.append(data['datos'][i]['coordenadas'][0]['longitud'])
+
+fig = go.Figure(go.Densitymapbox(lat=latr,lon=lonr,z=zr,radius=20,opacity=0.9, zmin=0, zmax=100))
+fig.update_layout(mapbox_style="stamen-terrain",mapbox_center_lon=-75.589,mapbox_center_lat=6.2429)
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+```
 
 #### ~ Login ~
 > En la elaboracion del sistema de Login, no se ha usado ninguna herramienta de base de datos como puede ser perfectamente SQL, solo se ha hecho desde el codigo, la implementación de un usuario y una contraseña, ya que he pensado que puede ser mas optimo para este trabajo.
