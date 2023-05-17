@@ -4,21 +4,57 @@ import plotly.express as px
 
 app = Dash(__name__)
 
-app.layout = html.Div([
-    html.H1("Sistema de Login"),
-    html.Div(id="login-container", children=[
-        html.Label("Usuario"),
-        dcc.Input(id="input-username", type="text"),
-        html.Label("Contraseña"),
-        dcc.Input(id="input-password", type="password"),
-        html.Button("Iniciar sesión", id="btn-login", n_clicks=0),
-        html.Div(id="login-error", style={"color": "red", "margin-top": "10px"})
-    ]),
-    html.Div(id="graph-container", style={"display": "none"}, children=[
-        html.H2("Niveles de Agua - SIATA"),
-        dcc.Graph(id="siata-graph", style={'height': '600px'})
-    ])
-])
+# Estilos CSS personalizados
+external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+app = Dash(__name__, external_stylesheets=external_stylesheets)
+
+# Definir el layout de la página web con estilos y elementos visuales
+app.layout = html.Div(
+    style={
+        #Aqui en url("/ruta/a/tu/imagen.jpg") pondremos la ruta a nuestra imagen
+        'backgroundImage': 'url("/ruta/a/tu/imagen.jpg")',
+        'backgroundSize': 'cover',
+        'backgroundPosition': 'center',
+        'height': '100vh',
+        'display': 'flex',
+        'justifyContent': 'center',
+        'alignItems': 'center'
+    },
+    children=[
+        html.Div(
+            style={
+                'backgroundColor': 'rgba(255, 255, 255, 0.8)',
+                'padding': '20px',
+                'borderRadius': '10px'
+            },
+            children=[
+                html.H1(
+                    children='Sistema de Login',
+                    style={'textAlign': 'center', 'color': '#000000'}
+                ),
+                html.Div(
+                    id="login-container",
+                    children=[
+                        html.Label("Usuario"),
+                        dcc.Input(id="input-username", type="text"),
+                        html.Label("Contraseña"),
+                        dcc.Input(id="input-password", type="password"),
+                        html.Button("Iniciar sesión", id="btn-login", n_clicks=0),
+                        html.Div(id="login-error", style={"color": "red", "margin-top": "10px"})
+                    ]
+                ),
+                html.Div(
+                    id="graph-container",
+                    style={"display": "none"},
+                    children=[
+                        html.H2("Niveles de Agua - SIATA"),
+                        dcc.Graph(id="siata-graph", style={'height': '600px'})
+                    ]
+                )
+            ]
+        )
+    ]
+)
 
 def validate_login(username, password):
     valid_username = "admin"
@@ -52,6 +88,6 @@ def login(n_clicks, username, password):
             return {}, {"display": "none"}, "Usuario o contraseña incorrectos", {}
     else:
         return {}, {"display": "none"}, "", {}
-
+    
 if __name__ == '__main__':
     app.run_server(debug=True)
