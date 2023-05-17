@@ -42,7 +42,47 @@ El objetivo ya sera la automatización de descarga de las librerias necesarias y
 apt install nano
 ```
 
-## Automatización en la creación de Dockers
+## Automatización del trabajo
+Afuera del contenedor, tendremos que crear 1 carpeta el cual tendra 2 archivos, primero que todo, un archivo para colocar el codigo de nuestra pagina web hecha con Python, y otra para las dependencias que requiera nuestro codigo de Python
+```sh
+mkdir SIATA
+cd SIATA
+touch pagina.py
+touch requirementsPagina.txt
+```
+
+Una vez que tengamos los 2 documentos, la de pagina.py podras encontrar el codigo completo en los archivos adjuntos
+
+Y en el de requirementsPagina.txt tendremos que colocar 3 lineas de texto, las cuales seran las dependencias que requiere nuestro codigo
+```sh
+dash
+pandas
+plotly
+```
+
+Cuando tengamos nuestros 2 archivos ya listos y estando dentro de la carpeta /SIATA, haremos otro archivo mas que sera nuestro Dockerfile
+```sh
+touch Dockerfile
+```
+
+Dentro del Dockerfile, le pondremos lo siguiente, tambien podras encontrar el codigo si gustas en los archivos adjuntos
+```sh
+FROM ubuntu
+RUN apt update
+RUN apt install python3.10 -y
+RUN apt install python3-pip -y
+WORKDIR /SIATA
+COPY pagina.py .
+COPY requirementsPagina.txt .
+RUN pip3 install -r requirementsPagina.txt
+CMD ["python3.10","pagina.py"]
+```
+
+Asi ya tendriamos todo listo para automatizar nuestro contenedor y que ejecute el servicio que estamos realizando. Solo faltaria ejecutar nuestro archivo Dockerfile `IMPORTANTE:` al momento de ejecutar el comando, debemos estar fuera del contenedor tambien al realizar estos archivos
+
+```sh
+docker build -t ubuntu .
+```
 
 ## Elaboracion de la página web
 Más que todo en este apartado se buscar mostrar y explicar la importancia de algunos factores del codigo compartido
