@@ -127,3 +127,8 @@ if username == valid_username and password == valid_password:
 `Usuario: admin`
 
 `Contraseña: password`
+
+#### ✨ Gracias Por Leer ✨
+
+
+###### Por cierto ¡Feliz Día del Profesor!🎆, Mensaje atrasado, pero profe, usted ha sido unos de los mejores profesores que he tenido en toda la Universidad, asi que le quiero desear un feliz dia del profesor (atrasado) bien merecido🎉
